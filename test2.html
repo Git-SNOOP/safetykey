@@ -1,0 +1,11 @@
+ <?php
+   $Drink = $_GET["Drink"];
+   echo $Drink;
+   echo "<br/>";
+
+   $CurrTime = (int)strtotime("now");
+	$mysqldate = date( 'Y-m-d H:i:s', $CurrTime );
+	echo $CurrTime;
+	echo "<br/>";
+	echo $mysqldate;
+?>

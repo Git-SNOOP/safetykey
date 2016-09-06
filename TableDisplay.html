@@ -1,0 +1,37 @@
+<?php 
+ 
+//DB 연결
+mysql_connect("52.79.189.224", "root", "1q2w3e") or die (mysql_error());
+mysql_select_db("AlcoholData");
+
+//DB 테이블에서 시간 및 음주측정 데이터 가져오기 (테이블 이름을 DrinkTime로 저장했음)
+$sql = "SELECT time, DrinkCheck FROM DrinkTime";
+$result = mysql_query( $sql ) or die (mysql_error());
+ 
+// 출력할 테이블 컬럼명 텍스트 입력
+echo "
+    <html>
+    <head><title>음주여부</title></head>
+    <body>
+    <center>
+    <H3>음주여부 리스트</H3>
+    <table width='500' border='1'>
+    <tr>
+    <td width='50%' align='center'>시간</td>
+    <td width='50%' align='center'>음주여부</td>
+    </tr>
+    </body>
+ </html>
+";
+
+// 쿼리의 결과값이 있는 동안 반복 출력
+while($row = mysql_fetch_array($result))
+    {
+        echo("
+        <tr>
+        <td align='center'>$row[time]</td>
+        <td align='center'>$row[DrinkCheck]</td>
+        </tr>
+         ");
+    }
+?>

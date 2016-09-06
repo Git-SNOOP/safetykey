@@ -1,0 +1,11 @@
+ <?php
+   $result = mysql_connect("52.79.189.224", "admin", "1q2w3e") or die (mysql_error()); 
+   $Drink = $_GET["Drink"];
+
+   $CurrTime = (int)strtotime("now");
+	$mysqldate = date( 'Y-m-d H:i:s', $CurrTime );
+	$Dquery = "insert into AlcoholData.DrinkTime (Time) values ($mysqldate)";		
+	$sqlt = "insert into AlcoholData.DrinkTime (DrinkCheck) values ($Drink)";
+   mysql_query($sqlt);
+   mysql_query($Dquery);
+?>
